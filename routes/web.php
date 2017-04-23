@@ -1,17 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-  We can learn for short time with big issue
-  if you have people support alles sind simple
-|
-*/
+Route::auth();
 
 Route::get('/', function () {
     $name = "Vo Thanh Tung2";
@@ -19,8 +8,14 @@ Route::get('/', function () {
     return view('welcome',compact('name','age'));
 });
 
-Route::get('/login', array () );
 
-Auth::routes();
+//Auth::routes();
+//Route::get('/login','HomeController@index');
+
 
 Route::get('/home', 'HomeController@index');
+Route::get('/tasks', 'TasksController@index');
+Route::post('/task', function(Request $request){
+    // here is call back like nodejs
+
+});
