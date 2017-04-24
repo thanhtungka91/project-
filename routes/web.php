@@ -9,13 +9,13 @@ Route::get('/', function () {
 });
 
 
-//Auth::routes();
-//Route::get('/login','HomeController@index');
 
+Route::get('/home', 'HomeController@index')->middleware('auth');
+//Route::get('/tasks', 'TasksController@index')->middleware('auth');
+// use 1 function or all middleware
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/home', 'HomeController@index');
-Route::get('/tasks', 'TasksController@index');
-Route::post('/task', function(Request $request){
-    // here is call back like nodejs
-
+    Route::group(['prefix' => 'tasks'], function () {
+        Route::get('/', ['as' => 'tasks.index', 'uses' => 'TasksController@index']);
+        });
 });
