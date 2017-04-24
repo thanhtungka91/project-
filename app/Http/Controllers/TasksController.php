@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskValidate;
 
 class TasksController extends Controller
 {
@@ -24,6 +26,16 @@ class TasksController extends Controller
     public function index()
     {
         return view('tasks.index');
+    }
+
+    public function create(Request $request){
+        $task = new Task();
+        $task->name = $request->task_name;
+        $task->content = $request->task_content;
+        $task->save();
+//        dd($allRequest);
+        // sems to be good
+        return view('home');
     }
 
     public function login()

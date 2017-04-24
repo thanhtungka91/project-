@@ -8,24 +8,26 @@
     @extends('layouts.app')
     @section('content')
         <div class="container">
-            <nav class = "navbar navbar-default">
+            {{--<nav class = "navbar navbar-default">--}}
                 {{-- contain in here, he is experience guy --}}
             </nav>
             <div class = 'panel-body'>
-                {{--@include('common.erros')--}}
-                {{--new emplate like extend??--}}
-                <form action = '/task' method="POST" class="form-horizontal">
-                    {{csrf_field()}}
-                    <!-- Taks Name, seems to be good to start from the begin -->
-                    <div class="form-group">
-                        <label for="tasks" class="col-sm-3 control-label">
-                            Tasks
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" name="name" id="name" class="form-control">
-                        </div>
-                    </div>
-                </form>
+                {{--use laravel form --}}
+                {!! Form::model(null,['method' => 'post','route' => ['tasks.create']]) !!}
+
+                    <td>
+                        {!! Form::label('Task name') !!}
+                        {!! Form::text('task_name', null, [ 'class' => 'form-control']) !!}
+                    </td>
+                    <td>
+                        {!! Form::label('Task Content') !!}
+                        {!! Form::textarea('task_content', null, [ 'class' => 'form-control']) !!}
+                    </td>
+            <div class="body">
+                {!! Form::submit('Create!') !!}
+            </div>
+
+                {!! Form::close() !!}
             </div>
             @yield('content')
         </div>
