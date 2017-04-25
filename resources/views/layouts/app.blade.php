@@ -15,6 +15,7 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="/js/jquery/dist/jquery.min.js"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

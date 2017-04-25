@@ -19,12 +19,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/{id}/done',['as' => 'course.done', 'uses' => 'CourseController@doneRegister']);
             Route::delete('/{id}',['as' => 'course.delete', 'uses' => 'CourseController@index']);
         });
-        Route::group(['prefix' => 'test'], function () {
-            Route::get('/', ['as' => 'test.list', 'uses' => 'TestController@index']);
-            Route::get('/add',['as' => 'test.add', 'uses' => 'TestController@add']);
-            Route::post('/add',['as' => 'test.create', 'uses' => 'TestController@create']);
-            Route::get('/{id}/done',['as' => 'test.done', 'uses' => 'TestController@doneRegister']);
-            Route::delete('/{id}',['as' => 'test.delete', 'uses' => 'TestController@index']);
+        Route::group(['prefix' => 'question'], function () {
+            Route::get('/', ['as' => 'question.list', 'uses' => 'QuestionController@index']);
+            Route::get('/add',['as' => 'question.add', 'uses' => 'QuestionController@add']);
+            Route::post('/add',['as' => 'question.create', 'uses' => 'QuestionController@create']);
+            Route::get('/{id}/done',['as' => 'question.done', 'uses' => 'QuestionController@doneRegister']);
+            Route::delete('/{id}',['as' => 'question.delete', 'uses' => 'QuestionController@index']);
         });
     });
 });
