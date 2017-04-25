@@ -2,18 +2,8 @@
     <head>
         <title> New Question</title>
     </head>
-    <script src="/js/question.js"></script>
     <script src="/js/jquery/dist/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#question_type').change(function(){
-                if($(this).val() == 2){
-                    $("#answer_text").hide();
-                    $("#answer_select").show();
-                }
-            });
-        });
-    </script>
+    <script src="/js/question.js"></script>
     <body>
     @extends('layouts.app')
     @section('content')
@@ -32,18 +22,30 @@
                     </td>
                     <div class="answer_text" id="answer_text">
                         <td>
-                            {!! Form::label('補足') !!}
+                            {!! Form::label('補足type1') !!}
                             {!! Form::textarea('answers', null, [ 'class' => 'form-control']) !!}
                         </td>
                     </div>
                     <div class="answer_select" style="display:none" id="answer_select" >
                         <td>
-                            {!! Form::label('補足slect') !!}
-                            {!! Form::textarea('answers', null, [ 'class' => 'form-control']) !!}
+                            {!! Form::label('補足type2') !!}
+                            <br>
+                            {!! Form::text('answers', null, [ 'class' => 'form-control add_answer']) !!}
+                            <button type="button" id = "add_answer" class="btn btn-default">＋入力欄追加</button>
+                            <button type="button" id = "dkm" class="btn btn-default">＋入力欄追加</button>
                         </td>
                     </div>
 
+                    <div class="answer_map" style="display:none" id="answer_map" >
+                        <td>
+                            {!! Form::label('補足type3') !!}
+                            {!! Form::textarea('answers', null, [ 'class' => 'form-control','id' => "answers"]) !!}
+                        </td>
+s
+                    </div>
+
                     <td>
+                        <br>
                         {!! Form::label('スライド資料登録') !!}
                         <br>
                         {!!Form::select('public', array(true => 'Public', false => 'Private'), 'Private',[ 'class' => 'btn btn-default'])!!}
