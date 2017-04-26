@@ -16,6 +16,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
             Route::get('/', ['as' => 'course.list', 'uses' => 'CourseController@index']);
             Route::get('/add',['as' => 'course.add', 'uses' => 'CourseController@add']);
             Route::post('/add',['as' => 'course.create', 'uses' => 'CourseController@create']);
+            Route::post('/uploadfile',['as' => 'course.uploadfile', 'uses' => 'CourseController@uploadfile']);
             Route::get('/{id}/done',['as' => 'course.done', 'uses' => 'CourseController@doneRegister']);
             Route::delete('/{id}',['as' => 'course.delete', 'uses' => 'CourseController@index']);
         });

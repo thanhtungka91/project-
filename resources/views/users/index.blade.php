@@ -1,4 +1,5 @@
 <html lang="en">
+<link href="{{ asset('css/course.css') }}" rel="stylesheet">
     <head>
         <title>User Management</title>
     </head>
@@ -29,15 +30,15 @@
                            @endif
                        </td>
                        <td>
-                           <button type="button" class="btn btn-default">Edit</button>
+                           <a href="#" type="button" class="btn btn-default">Edit</a>
                        </td>
                        <td>
-                           <button type="button" class="btn btn-danger">Delete</button>
+                           <a type="button" class="btn btn-danger">Delete</a>
                        </td>
                    </tr>
                @endforeach
             </table>
-                <button type="button" class="btn btn-default">Create New</button>
+                <a href="{{ route('user.add') }}" type="button" class="btn btn-default">Create New</a>
         </div>
     @endsection
     </body>

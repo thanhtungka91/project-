@@ -1,35 +1,39 @@
 <html lang="en">
     <head>
         <title> List Tasks</title>
-        start from the simple
     </head>
-
+    <link href="{{ asset('css/course.css') }}" rel="stylesheet">
     <body>
     @extends('layouts.app')
     @section('content')
         <div class="container">
-            {{--<nav class = "navbar navbar-default">--}}
-                {{-- contain in here, he is experience guy --}}
-            </nav>
-            <div class = 'panel-body'>
-                {{--use laravel form --}}
-                {!! Form::model(null,['method' => 'post','route' => ['tasks.create']]) !!}
+            <div class="course_all">
+                <a href="{{ route('course.add') }}" type="button" class="btn btn-default">新規登録</a>
+                <br>
+                <br>
+                <span>登録済み講座一覧</span>
+                <br>
+                @foreach($courses as $course)
+                    <br>
+                    <div class="course_detail">
+                        <div class="thumbnail">
+                            thumbnail
+                        </div>
+                        <div class="course_infor">
+                            <li>
+                                {{$course->course_name}}
+                            </li>
+                            <li>
+                                {{$course->subject_name}}
+                            </li>
+                            <li>
+                                {{$course->subject_overview}}
+                            </li>
+                        </div>
+                    </div>
+                @endforeach
 
-                    <td>
-                        {!! Form::label('Task name') !!}
-                        {!! Form::text('task_name', null, [ 'class' => 'form-control']) !!}
-                    </td>
-                    <td>
-                        {!! Form::label('Task Content') !!}
-                        {!! Form::textarea('task_content', null, [ 'class' => 'form-control']) !!}
-                    </td>
-            <div class="body">
-                {!! Form::submit('Create!') !!}
             </div>
-
-                {!! Form::close() !!}
-            </div>
-            @yield('content')
         </div>
     @endsection
     </body>

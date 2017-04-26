@@ -24,7 +24,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('course.list');
+        $courses = Course::all();
+//        dd($courses);
+        return view('course.list',[
+            'courses' => $courses
+        ]);
     }
 
     public function create(Request $request){

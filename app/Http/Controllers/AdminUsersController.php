@@ -34,11 +34,22 @@ class AdminUsersController extends Controller
         ]);
     }
     public function add(){
-//        dd("ok");
         $error = "";
         return view('users.register',[
             'error' => $error
         ]);
+    }
+    public function create(Request $request){
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request['password']);
+        $user->admin = $user->active = 0;
+        // not done
+        //validate same password
+        // exist users before
+        $user->save();
+        return redirect()->route('user.list');
     }
 
 }
