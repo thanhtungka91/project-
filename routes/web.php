@@ -5,7 +5,7 @@ Route::auth();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','admin']], function () {
     Route::group(['prefix' => 'tasks'], function () {
         Route::get('/', ['as' => 'tasks.index', 'uses' => 'TasksController@index']);
         Route::post('/',['as' => 'tasks.create', 'uses' => 'TasksController@create']);
@@ -25,6 +25,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/add',['as' => 'question.create', 'uses' => 'QuestionController@create']);
             Route::get('/{id}/done',['as' => 'question.done', 'uses' => 'QuestionController@doneRegister']);
             Route::delete('/{id}',['as' => 'question.delete', 'uses' => 'QuestionController@index']);
+        });
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/', ['as' => 'user.list', 'uses' => 'AdminUsersController@index']);
+            Route::get('/add',['as' => 'user.add', 'uses' => 'AdminUsersController@add']);
+            Route::post('/add',['as' => 'user.create', 'uses' => 'AdminUsersController@create']);
+            Route::get('/{id}/done',['as' => 'user.done', 'uses' => 'AdminUsersController@doneRegister']);
+            Route::delete('/{id}',['as' => 'user.delete', 'uses' => 'AdminUsersController@index']);
         });
     });
 });
