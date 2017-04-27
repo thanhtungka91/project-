@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Input;
+use Image;
+use Illuminate\Auth\Access\Response;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -48,5 +50,33 @@ class CourseController extends Controller
     public function doneRegister()
     {
         return view('course.done');
+    }
+    public function uploadfile()
+    {
+        $files = Input::file('files');
+
+        if ($files) {
+
+            $destinationPath = public_path() . '/uploads/';
+            foreach($files as $file){
+                $filename = $file->getClientOriginalName();
+                $upload_success = $file->move($destinationPath, $filename);
+            }
+            if ($upload_success) {
+                Image::make($destinationPath . $filename)->resize(100, 100)->save($destinationPath . "100x100_" . $filename);
+
+                return response()->json([
+                    'name' => 'Abigail',
+                    'state' => 'CA'
+                ]);
+            } else {
+                return Response::json('error', 400);
+            }
+        }else{
+            return response()->json([
+                'name' => 'Abigail',
+                'state' => 'CA'
+            ]);
+        }
     }
 }
