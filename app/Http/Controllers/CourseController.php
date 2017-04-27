@@ -58,16 +58,19 @@ class CourseController extends Controller
         if ($files) {
 
             $destinationPath = public_path() . '/uploads/';
+            $results = [];
             foreach($files as $file){
                 $filename = $file->getClientOriginalName();
                 $upload_success = $file->move($destinationPath, $filename);
+                $result = new \stdClass();
+                $result->url= $destinationPath;
+                array_push($results,$result);
             }
             if ($upload_success) {
                 Image::make($destinationPath . $filename)->resize(100, 100)->save($destinationPath . "100x100_" . $filename);
 
                 return response()->json([
-                    'name' => 'Abigail',
-                    'state' => 'CA'
+                    'files' => $results
                 ]);
             } else {
                 return Response::json('error', 400);

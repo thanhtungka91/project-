@@ -11,7 +11,7 @@ class TasksController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return void;
      */
     public function __construct()
     {
@@ -33,8 +33,6 @@ class TasksController extends Controller
         $task->name = $request->task_name;
         $task->content = $request->task_content;
         $task->save();
-//        dd($allRequest);
-        // sems to be good
         return view('home');
     }
 
