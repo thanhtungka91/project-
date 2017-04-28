@@ -17,7 +17,11 @@
                     <br>
                     <div class="course_detail">
                         <div class="thumbnail">
-                            {{ Html::image('uploads/' . $course->thumbnail ) }}
+                            <a href="{{ route('course.detail',['id'=>$course->id] )}}">
+                                <img border="0" alt="W3Schools" src="{{ '/uploads/' . $course->thumbnail  }}">
+                            </a>
+                            {{--{{ Html::image('uploads/' . $course->thumbnail ) }}--}}
+
                         </div>
                         <div class="course_infor">
                             <li>

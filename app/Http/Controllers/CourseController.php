@@ -7,25 +7,15 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $courses = Course::all();
-//        dd($courses);
         return view('course.list',[
             'courses' => $courses
         ]);
@@ -46,6 +36,17 @@ class CourseController extends Controller
     public function add()
     {
         return view('course.add');
+    }
+    public function detail($courseID)
+    {
+//        dd($courseID);
+        $course = Course::where([
+            'id' =>$courseID
+        ])->first();
+//        dd($course);
+        return view('course.detail',[
+            'course' => $course
+        ]);
     }
     public function doneRegister()
     {
