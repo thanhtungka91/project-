@@ -47,7 +47,7 @@
             <span class="btn btn-success fileinput-button fileinput-video-button">
             <i class="glyphicon glyphicon-plus"></i>
             <span>Upload Video</span>
-            <input id="uploadvideo" type="file" name="files[]" multiple>
+            <input id="uploadvideo" type="file" name="files" >
             </span>
             <br>
             <br>
@@ -61,7 +61,7 @@
             <span class="btn btn-success fileinput-button fileinput-thumbnail-button">
             <i class="glyphicon glyphicon-plus"></i>
             <span>Upload Thumbnail</span>
-            <input id="uploadthumbnail" type="file" name="files[]" multiple>
+            <input id="uploadthumbnail" type="file" name="files" >
 
             </span>
             <br>
@@ -76,7 +76,7 @@
             <span class="btn btn-success fileinput-button fileinput-document-button">
             <i class="glyphicon glyphicon-plus"></i>
             <span>Upload Document</span>
-            <input id="uploaddocument" type="file" name="document_files[]" multiple>
+            <input id="uploaddocument" type="file" name="files[]" multiple>
 
             </span>
             <br>
