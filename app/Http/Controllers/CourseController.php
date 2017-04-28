@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Input;
-use Image;
 use Illuminate\Auth\Access\Response;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -39,6 +37,8 @@ class CourseController extends Controller
         $course->subject_name = $request->subject_name;
         $course->subject_overview = $request->subject_overview;
         $course->instructor_name = $request->instructor_name;
+        $course->video = $request->video;
+        $course->thumbnail = $request->thumbnail;
         $course->save();
         return redirect()->route('course.done', ['id' => $course->id]);
     }
@@ -51,35 +51,5 @@ class CourseController extends Controller
     {
         return view('course.done');
     }
-    public function uploadfile()
-    {
-        $files = Input::file('files');
 
-        if ($files) {
-
-            $destinationPath = public_path() . '/uploads/';
-            $results = [];
-            foreach($files as $file){
-                $filename = $file->getClientOriginalName();
-                $upload_success = $file->move($destinationPath, $filename);
-                $result = new \stdClass();
-                $result->url= $destinationPath;
-                array_push($results,$result);
-            }
-            if ($upload_success) {
-                Image::make($destinationPath . $filename)->resize(100, 100)->save($destinationPath . "100x100_" . $filename);
-
-                return response()->json([
-                    'files' => $results
-                ]);
-            } else {
-                return Response::json('error', 400);
-            }
-        }else{
-            return response()->json([
-                'name' => 'Abigail',
-                'state' => 'CA'
-            ]);
-        }
-    }
 }

@@ -17,7 +17,7 @@
                     <br>
                     <div class="course_detail">
                         <div class="thumbnail">
-                            thumbnail
+                            {{ Html::image('uploads/' . $course->thumbnail ) }}
                         </div>
                         <div class="course_infor">
                             <li>

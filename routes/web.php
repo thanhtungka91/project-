@@ -34,5 +34,8 @@ Route::group(['middleware' => ['auth','admin']], function () {
             Route::get('/{id}/done',['as' => 'user.done', 'uses' => 'AdminUsersController@doneRegister']);
             Route::delete('/{id}',['as' => 'user.delete', 'uses' => 'AdminUsersController@index']);
         });
+        Route::group(['prefix' => 'files'], function () {
+            Route::post('/upload',['as' => 'files.uploadfile', 'uses' => 'FilesController@uploadfile']);
+        });
     });
 });

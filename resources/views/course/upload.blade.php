@@ -41,25 +41,25 @@
     $(function () {
         'use strict';
         // Change this to the location of your server-side upload handler:
-        var url = 'uploadfile',
-            uploadButton = $('<button/>')
-                .addClass('btn btn-primary')
-                .prop('disabled', true)
-                .text('Processing...')
-                .on('click', function () {
-                    var $this = $(this),
-                            data = $this.data();
-                    $this
-                            .off('click')
-                            .text('Abort')
-                            .on('click', function () {
-                                $this.remove();
-                                data.abort();
-                            });
-                    data.submit().always(function () {
-                        $this.remove();
-                    });
-                });
+        var url = 'uploadfile';
+//            uploadButton = $('<button/>')
+//                .addClass('btn btn-primary')
+//                .prop('disabled', true)
+//                .text('Processing...')
+//                .on('click', function () {
+//                    var $this = $(this),
+//                            data = $this.data();
+//                    $this
+//                            .off('click')
+//                            .text('Abort')
+//                            .on('click', function () {
+//                                $this.remove();
+//                                data.abort();
+//                            });
+//                    data.submit().always(function () {
+//                        $this.remove();
+//                    });
+//                });
         $('#fileupload').fileupload({
             maxNumberOfFiles: 1,
             url: url,
@@ -79,8 +79,8 @@
                         .append($('<span/>').text(file.name));
                 if (!index) {
                     node
-                            .append('<br>')
-                            .append(uploadButton.clone(true).data(data));
+                            .append('<br>');
+//                            .append(uploadButton.clone(true).data(data));
                 }
                 node.appendTo(data.context);
             });
@@ -98,11 +98,11 @@
                         .append('<br>')
                         .append($('<span class="text-danger"/>').text(file.error));
             }
-            if (index + 1 === data.files.length) {
-                data.context.find('button')
-                        .text('Upload')
-                        .prop('disabled', !!data.files.error);
-            }
+//            if (index + 1 === data.files.length) {
+//                data.context.find('button')
+//                        .text('Upload')
+//                        .prop('disabled', !!data.files.error);
+//            }
         }).on('fileuploadprogressall', function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
             $('#progress .progress-bar').css(

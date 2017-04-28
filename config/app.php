@@ -237,6 +237,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
     ],
 
 ];
