@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Auth\Access\Response;
 use App\Models\Course;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -29,6 +29,14 @@ class CourseController extends Controller
         $course->instructor_name = $request->instructor_name;
         $course->video = $request->video;
         $course->thumbnail = $request->thumbnail;
+        // change the files to public
+        $files = File::where('name_url', '=' ,$request->video)
+            ->orwhere('name_url', '=' ,$request->thumbnail)
+            ->get();
+        foreach($files as $file){
+            $file->public = 1;
+            $file->save();
+        }
         $course->save();
         return redirect()->route('course.done', ['id' => $course->id]);
     }
@@ -39,11 +47,9 @@ class CourseController extends Controller
     }
     public function detail($courseID)
     {
-//        dd($courseID);
         $course = Course::where([
             'id' =>$courseID
         ])->first();
-//        dd($course);
         return view('course.detail',[
             'course' => $course
         ]);

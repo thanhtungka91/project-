@@ -172,7 +172,7 @@ $(function () {
         dataType: 'json',
         autoUpload:true,
         acceptFileTypes: /(\.|\/)(pdf|doc|docx)$/i,
-        maxFileSize: 1000000,
+        maxFileSize: 10000000,
         disableImageResize: /Android(?!.*Chrome)|Opera/
             .test(window.navigator.userAgent),
         previewMaxWidth: 100,
