@@ -30,10 +30,13 @@
                            @endif
                        </td>
                        <td>
-                           <a href="#" type="button" class="btn btn-default">Edit</a>
+                           <a href="{{ route('user.detail',['id' =>$user->id ]) }}" type="button" class="btn btn-default">Detail</a>
                        </td>
                        <td>
-                           <a type="button" class="btn btn-danger">Delete</a>
+                           {!! Form::open(['route' => ['user.delete', $user->id]]) !!}
+                           <input name="_method" type="hidden" value="DELETE">
+                           <button type="submit" class="btn btn-default btn-danger" value="Delete"></button>
+                           {!! Form::close() !!}
                        </td>
                    </tr>
                @endforeach

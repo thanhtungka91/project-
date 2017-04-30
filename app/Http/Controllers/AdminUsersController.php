@@ -26,7 +26,8 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where(['delete_flag' => 0])
+        ->get();
         $test = "ok";
         return view('users.index',[
             'users' => $users,
@@ -50,6 +51,34 @@ class AdminUsersController extends Controller
         // exist users before
         $user->save();
         return redirect()->route('user.list');
+    }
+
+    public function edit($userId){
+        $user = User::where('id', "=", $userId)
+        ->first();
+//        dd($user);
+        return view('users.detail',[
+            'user' => $user
+        ]);
+    }
+
+    public function update($userId, Request $request){
+
+    }
+
+    public function delete($userId){
+        $user = User::where('id', "=", $userId)
+            ->first();
+        // soft delete user
+        if(!$user){
+            retdirect()->route('user.list');
+        }else{
+            $user->delete_flag = 1;
+            $user->save();
+        }
+        return view('users.detail',[
+            'user' => $user
+        ]);
     }
 
 }

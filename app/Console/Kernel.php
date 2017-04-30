@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('ltest:clear')->everyMinute()->thenPing('google.com');
     }
 
     /**

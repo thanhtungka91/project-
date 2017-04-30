@@ -29,10 +29,11 @@ Route::group(['middleware' => ['auth','admin']], function () {
         });
         Route::group(['prefix' => 'user'], function () {
             Route::get('/', ['as' => 'user.list', 'uses' => 'AdminUsersController@index']);
+            Route::get('/{id}', ['as' => 'user.detail', 'uses' => 'AdminUsersController@edit']);
             Route::get('/add',['as' => 'user.add', 'uses' => 'AdminUsersController@add']);
             Route::post('/add',['as' => 'user.create', 'uses' => 'AdminUsersController@create']);
             Route::get('/{id}/done',['as' => 'user.done', 'uses' => 'AdminUsersController@doneRegister']);
-            Route::delete('/{id}',['as' => 'user.delete', 'uses' => 'AdminUsersController@index']);
+            Route::delete('/{id}/delete',['as' => 'user.delete', 'uses' => 'AdminUsersController@delete']);
         });
         Route::group(['prefix' => 'files'], function () {
             Route::post('/upload',['as' => 'files.uploadfile', 'uses' => 'FilesController@uploadfile']);
