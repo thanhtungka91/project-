@@ -18,30 +18,28 @@
                     <td>
                         <br>
                         {!! Form::label('問題文　※必須') !!}
-                        {!! Form::text('question', null, [ 'class' => 'form-control']) !!}
+                        {!! Form::text('question', null, [ 'class' => 'form-control question']) !!}
                     </td>
                     <div class="answer_text" id="answer_text">
                         <td>
                             {!! Form::label('補足type1') !!}
-                            {!! Form::textarea('answers', null, [ 'class' => 'form-control']) !!}
+                            {!! Form::textarea('answers_type1', null, [ 'class' => 'form-control']) !!}
                         </td>
                     </div>
                     <div class="answer_select" style="display:none" id="answer_select" >
                         <td>
                             {!! Form::label('補足type2') !!}
                             <br>
-                            {!! Form::text('answers', null, [ 'class' => 'form-control add_answer']) !!}
+                            {!! Form::text('answers_type2[]', null, [ 'class' => 'add_answer']) !!}
                             <button type="button" id = "add_answer" class="btn btn-default">＋入力欄追加</button>
-                            <button type="button" id = "dkm" class="btn btn-default">＋入力欄追加</button>
                         </td>
                     </div>
 
                     <div class="answer_map" style="display:none" id="answer_map" >
                         <td>
                             {!! Form::label('補足type3') !!}
-                            {!! Form::textarea('answers', null, [ 'class' => 'form-control','id' => "answers"]) !!}
+                            {!! Form::textarea('answers_type3', null, [ 'class' => 'form-control','id' => "answers"]) !!}
                         </td>
-s
                     </div>
 
                     <td>

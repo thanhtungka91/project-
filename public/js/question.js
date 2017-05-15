@@ -20,19 +20,11 @@ $(document).ready(function(){
         }
     });
     $('#add_answer').click(function(){
-        var html = $(".add_answer").first().clone();
-        var remove=$('<input>').attr({
-            type: "button",
-            value: "delete",
-            id: "remove",
-            class: "btn btn-danger remove"
+        var include = '<div class="add_answer"><input type="text" /><span class="btn btn-default remove_button"> Delete</span></div>';
+        $(".add_answer").last().after(include);
 
-        });
-        $(".add_answer").last().after(html).after(remove);
     });
-    $('#dkm').click(function(){
-        debugger;
-        alert("here is remove");
-        // $(this).parents(".add_answer").remove();
+    $('.answer_select').on('click','.remove_button',function() {
+        $(this).parent().remove();
     });
 });

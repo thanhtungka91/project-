@@ -7,21 +7,11 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('question.list');
@@ -29,7 +19,24 @@ class QuestionController extends Controller
 
     public function create(Request $request){
         $question = new Question();
-        dd($request->all());
+        $question->question = $request->question;
+        $question->question_type = $request->question_type;
+        if($question->question_type == 1){
+            $question->answers = $request->answers_type1;
+        } else if($question->question_type == 2){
+//
+            $question->answers = "";
+            dd($request->answers_type2);
+            for ($i = 0; $i < count($request->answers_type2); $i++){
+                dd("comere plase");
+//                $question->answers = $question->answers . ','. $request->$request->answers_type2[$i];
+            }
+
+        }else {
+            $question->answers = $request->answers_type3;
+        }
+
+        $question->public = $request->public;
         $question->save();
         return redirect()->route('question.add');
     }

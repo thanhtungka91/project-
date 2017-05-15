@@ -17,7 +17,7 @@
             を登録しました。
             引き続き関連する『テスト』や『アンケート』を登録してください。
             <div>
-                <button type="button" class="btn btn-primary">テスト登録</button>
+                <a href="{{ route('question.add') }}" type="button" class="btn btn-primary">テスト登録</a>
                 <button type="button" class="btn btn-primary">アンケート登録</button>
             </div>
         </div>
