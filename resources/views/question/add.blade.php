@@ -35,6 +35,14 @@
                         </td>
                     </div>
 
+                    <div class="answer_type2" style="display:none" id="answer_type2" >
+                        <td>
+                            {!! Form::label('Correct Answer') !!}
+                            <br>
+                            {!!Form::select('answer', ['Select correct Answer'], "",[ 'class' => 'select-answer'])!!}
+                        </td>
+                    </div>
+
                     <div class="answer_map" style="display:none" id="answer_map" >
                         <td>
                             {!! Form::label('補足type3') !!}
