@@ -19,12 +19,22 @@ $(document).ready(function(){
             $("#answer_map").show();
         }
     });
+    var number_answers = 1;
     $('#add_answer').click(function(){
-        var include = '<div class="add_answer"><input type="text" /><span class="btn btn-default remove_button"> Delete</span></div>';
+        number_answers = number_answers+1;
+        var include = '<div class="add_answer"><input type="text" name = "answer_type2[' + (number_answers) + ']" /></div>';
+        var remove_button = '<span class="btn btn-default remove_button"> Delete</span>';
         $(".add_answer").last().after(include);
-
+        $(".remove_button").remove();
+        $(".add_answer").last().after(remove_button);
     });
     $('.answer_select').on('click','.remove_button',function() {
-        $(this).parent().remove();
+        if($(this).parent().children('.add_answer').length<=1){
+            alert("at least 1 answer is required");
+        }else{
+            number_answers = number_answers-1;
+            $(this).parent().children('.add_answer').last().remove();
+        }
+
     });
 });

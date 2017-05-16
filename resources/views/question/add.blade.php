@@ -30,7 +30,7 @@
                         <td>
                             {!! Form::label('補足type2') !!}
                             <br>
-                            {!! Form::text('answers_type2[]', null, [ 'class' => 'add_answer']) !!}
+                            {!! Form::text('answers_type2[1]', null, [ 'class' => 'add_answer']) !!}
                             <button type="button" id = "add_answer" class="btn btn-default">＋入力欄追加</button>
                         </td>
                     </div>
