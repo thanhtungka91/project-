@@ -4,7 +4,7 @@
 <div class="container">
     <div class="items">
     <table style="width:100%">
-        <tr>
+        <tr >
             <th>itemscode</th>
             <th>itemname</th>
             <th>image</th>
@@ -14,11 +14,10 @@
             <tr>
                 <td>{{ $item->itemcode }}</td>
                 <td>{{ $item->name }}</td>
-                <td><img src={{ $item->imgpath }} alt="Girl in a jacket" max-width="100%" height="100%">
+                <td style="with:100"><img src={{ $item->imgpath }} alt="items image">
                 </td>
             </tr>
         @endforeach
-        
     </table>
         
     </div>
