@@ -3,6 +3,8 @@
 Route::auth();
 
 Route::get('/', 'HomeController@index');
+Route::get('/items', 'ItemsController@index');
+
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::group(['middleware' => ['auth','admin']], function () {
